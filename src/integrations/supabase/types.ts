@@ -14,7 +14,92 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      dumps: {
+        Row: {
+          author_name: string
+          body: string
+          created_at: string
+          id: string
+          link: string | null
+          subject: string
+          tags: string[]
+          title: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          author_name?: string
+          body?: string
+          created_at?: string
+          id?: string
+          link?: string | null
+          subject?: string
+          tags?: string[]
+          title: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          author_name?: string
+          body?: string
+          created_at?: string
+          id?: string
+          link?: string | null
+          subject?: string
+          tags?: string[]
+          title?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string
+          id: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      saves: {
+        Row: {
+          created_at: string
+          dump_id: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          dump_id: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          dump_id?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "saves_dump_id_fkey"
+            columns: ["dump_id"]
+            isOneToOne: false
+            referencedRelation: "dumps"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
