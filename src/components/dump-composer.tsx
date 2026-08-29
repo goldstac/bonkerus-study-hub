@@ -95,7 +95,11 @@ export function DumpComposer({
             className="space-y-4"
             onSubmit={(event) => {
               event.preventDefault();
-              if (!title.trim()) return toast.error("Give it a title.");
+              if (!title.trim()) {
+                toast.error("Give it a title.");
+                return;
+              }
+
               mutation.mutate();
             }}
           >
