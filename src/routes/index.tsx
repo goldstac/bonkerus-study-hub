@@ -9,7 +9,7 @@ import { DumpCard, type Dump } from "@/components/dump-card";
 import { DumpComposer } from "@/components/dump-composer";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { SUBJECTS, subjectColor } from "@/lib/study";
+import { subjectColor } from "@/lib/study";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/use-auth";
 import { useSaves } from "@/hooks/use-saves";
@@ -162,7 +162,7 @@ function Index() {
             >
               Everything ({dumps.length})
             </button>
-            {SUBJECTS.filter((option) => subjectCounts.get(option)).map((option) => (
+            {[...subjectCounts.keys()].sort().map((option) => (
               <button
                 key={option}
                 type="button"
